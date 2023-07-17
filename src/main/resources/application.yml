@@ -9,7 +9,7 @@ spring:
     url: jdbc:mysql://localhost:3306/sns_230320?characterEncoding=UTF-8
     username: root
     password: root
-    jpa:
+  jpa:
     show-sql: true
     hibernate:
       ddl-auto: none
