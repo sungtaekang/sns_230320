@@ -3,6 +3,9 @@ package com.sns.user;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -67,6 +70,40 @@ public class UserRestController {
 			result.put("code", 500);
 			result.put("errorMessage", "회원가입 하는데 실패했습니다.");
 		}
+		return result;
+	}
+	
+	@PostMapping("/sign_in")
+	public Map<String, Object> signIn(
+			@RequestParam("loginId") String loginId,
+			@RequestParam("password") String password,
+			HttpServletRequest request) {
+			// HttpSession sesstion으로 하면 아래 if문에서 다시 안해도됨
+		
+		// password hashing
+		String hashedPassword = EncryptUtils.md5(password);
+		
+		// loginId, hashedPassword로 UserEntity => null or 채워져있음
+		UserEntity userEntity = userBO.getUserEntityByLoginIdPassword(loginId, hashedPassword);
+		
+		Map<String, Object> result = new HashMap<>();
+		
+		// 로그인 처리
+		if (userEntity != null) {
+			// 로그인 처리
+			HttpSession session = request.getSession();
+			session.setAttribute("userId", userEntity.getId());
+			session.setAttribute("userLoginId", userEntity.getLoginId());
+			session.setAttribute("userName", userEntity.getName());
+			
+			result.put("code", 1);
+			result.put("result", "성공");
+		} else {
+			// 로그인 불가
+			result.put("code", 500);
+			result.put("errorMessage", "존재하지 않는 사용자입니다.");
+		}
+		
 		return result;
 	}
 	

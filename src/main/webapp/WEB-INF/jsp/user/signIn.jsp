@@ -22,8 +22,10 @@
 			</div>
 			
 			<%-- btn-block: 로그인 박스 영역에 버튼을 가득 채운다. --%>
-			<input type="submit" id="loginBtn" class="btn btn-block btn-primary" value="로그인">
-			<a class="btn btn-block btn-dark" href="/user/sign_up_view">회원가입</a>
+			<div class="d-flex h-100">
+				<input type="submit" id="loginBtn" class="btn btn-block btn-primary h-100 mt-2 mr-2" value="로그인">
+				<a class="btn btn-block btn-dark h-100" href="/user/sign_up_view">회원가입</a>
+			</div>
 		</form>
 	</div>
 </div>
