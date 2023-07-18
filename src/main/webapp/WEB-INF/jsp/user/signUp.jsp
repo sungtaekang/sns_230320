@@ -135,7 +135,7 @@
 				// response
 				if (data.code == 1) {
 					alert("가입을 환영합니다! 로그인을 해주세요.");
-					location.href = "user/sign_in_view";  // 로그인 화면으로 이동
+					location.href = "/user/sign_in_view";  // 로그인 화면으로 이동
 				} else {
 					// 로직 실패
 					alert(data.errorMessage);
