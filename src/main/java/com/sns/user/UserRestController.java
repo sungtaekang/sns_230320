@@ -78,7 +78,7 @@ public class UserRestController {
 			@RequestParam("loginId") String loginId,
 			@RequestParam("password") String password,
 			HttpServletRequest request) {
-			// HttpSession sesstion으로 하면 아래 if문에서 다시 안해도됨
+			// HttpSession session으로 하면 아래 if문에서 다시 안해도됨
 		
 		// password hashing
 		String hashedPassword = EncryptUtils.md5(password);
