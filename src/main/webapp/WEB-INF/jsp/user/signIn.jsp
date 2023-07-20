@@ -57,7 +57,7 @@ $(document).ready(function() {
 		.done(function(data) {  // response
 			if (data.code == 1) {
 				// 성공
-				location.href = "/post/post_list_view"; // 글목록으로 이동
+				location.href="/timeline/timeline_view"; // 글목록으로 이동
 			} else {
 				// 로직 실패
 				alert(data.errorMessage);
