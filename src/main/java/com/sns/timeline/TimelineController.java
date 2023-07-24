@@ -8,22 +8,25 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.sns.post.bo.PostBO;
-import com.sns.post.entity.PostEntity;
+import com.sns.timeline.bo.TimelineBO;
+import com.sns.timeline.domain.CardView;
 
 @RequestMapping("/timeline")
 @Controller
 public class TimelineController {
 
 	@Autowired
-	private PostBO postBO;
+	private TimelineBO timelineBO;
 	
 	@GetMapping("/timeline_view")
 	public String timelineView(Model model) {
-		List<PostEntity> postList = postBO.getPostList();
-		// commentList => model
+//		List<PostEntity> postList = postBO.getPostList();
+//		// commentList => model
+//		
+//		model.addAttribute("postList", postList);
+		List<CardView> cardList = timelineBO.generateCardViewList();
 		
-		model.addAttribute("postList", postList);
+		model.addAttribute("cardList", cardList);
 		model.addAttribute("view", "timeline/timeline");
 		return "template/layout";
 	}

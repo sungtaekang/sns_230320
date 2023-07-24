@@ -1,5 +1,6 @@
 package com.sns.comment.domain;
 
+import java.time.ZonedDateTime;
 import java.util.Date;
 
 import lombok.Data;
@@ -13,6 +14,6 @@ public class Comment {
 	private int userId;
 	private int postId;
 	private String content;
-	private Date createdAt;
-	private Date updatedAt;
+	private ZonedDateTime createdAt;
+	private ZonedDateTime updatedAt;
 }
