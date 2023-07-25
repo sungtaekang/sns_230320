@@ -1,7 +1,6 @@
 package com.sns.comment.domain;
 
 import java.time.ZonedDateTime;
-import java.util.Date;
 
 import lombok.Data;
 import lombok.ToString;
